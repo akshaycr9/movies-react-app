@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import MoviesList from '../components/MoviesList';
 import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 const Search = ({ genres }) => {
   let { query } = useParams();
@@ -26,6 +27,9 @@ const Search = ({ genres }) => {
 
   return (
     <Container maxWidth="xl">
+      <Typography variant="h5" component="h3" style={{ margin: 20 }}>
+        Search Results for: {query}
+      </Typography>
       <MoviesList movies={movies} isFetching={isFetching} genres={genres} />
     </Container>
   );

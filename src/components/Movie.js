@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import StarIcon from '@mui/icons-material/Star';
 import RecommendIcon from '@mui/icons-material/Recommend';
+import NoImage from '../images/no-image-available.png';
 
 const Movie = ({ movie, genres }) => {
   function getGenres() {
@@ -16,14 +17,13 @@ const Movie = ({ movie, genres }) => {
       return [];
     }
   }
-
+  const image = movie.poster_path
+    ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+    : NoImage;
   return (
     <Card style={{ width: 300, margin: 20 }}>
       <CardActionArea>
-        <CardMedia
-          style={{ height: 400 }}
-          image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-        />
+        <CardMedia style={{ height: 400 }} image={image} />
         <CardContent>
           <Typography variant="headline" component="h2">
             {movie.title}

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useRef } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
@@ -48,10 +48,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const SearchBar = () => {
   let navigate = useNavigate();
+  const searchRef = useRef();
   const [searchTerm, setSearchTerm] = React.useState('');
 
   const search = (query) => {
-    setSearchTerm('');
+    searchRef.current.value = '';
     navigate(`/search/${query}`);
   };
 
@@ -61,6 +62,7 @@ const SearchBar = () => {
         <SearchIcon />
       </SearchIconWrapper>
       <StyledInputBase
+        inputRef={searchRef}
         placeholder="Search…"
         inputProps={{ 'aria-label': 'search' }}
         onChange={(e) => setSearchTerm(e.target.value)}
