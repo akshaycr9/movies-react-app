@@ -1,15 +1,16 @@
 import React from 'react';
+import Grid from '@mui/material/Grid';
 
 const MoviesList = ({ movies, isFetching }) => {
   return (
-    <>
-      <ul className="list-group mb-2">
-        {movies.map((movie) => (
-          <li className="list-group-item">{movie.title}</li>
-        ))}
-      </ul>
+    <Grid container spacing={3}>
+      {movies.map((movie) => (
+        <Grid item xs={6} md={3}>
+          <h2>{movie.title}</h2>
+        </Grid>
+      ))}
       {isFetching && 'Fetching more items...'}
-    </>
+    </Grid>
   );
 };
 

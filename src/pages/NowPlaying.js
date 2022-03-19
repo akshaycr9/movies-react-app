@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Container from '@mui/material/Container';
 import MoviesList from '../components/MoviesList';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
 
@@ -19,7 +20,11 @@ const NowPlaying = () => {
     setIsFetching(false);
   }
 
-  return <MoviesList movies={movies} isFetching={isFetching} />;
+  return (
+    <Container maxWidth="xl">
+      <MoviesList movies={movies} isFetching={isFetching} />
+    </Container>
+  );
 };
 
 export default NowPlaying;
