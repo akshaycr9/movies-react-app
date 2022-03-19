@@ -3,7 +3,7 @@ import MoviesList from '../components/MoviesList';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import Container from '@mui/material/Container';
 
-const TopRated = () => {
+const TopRated = ({ genres }) => {
   const [movies, setMovies] = useState([]);
   const [isFetching, setIsFetching] = useInfiniteScroll(getMovies);
 
@@ -22,7 +22,7 @@ const TopRated = () => {
 
   return (
     <Container maxWidth="xl">
-      <MoviesList movies={movies} isFetching={isFetching} />
+      <MoviesList movies={movies} isFetching={isFetching} genres={genres} />
     </Container>
   );
 };

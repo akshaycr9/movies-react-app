@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import TopRated from './pages/TopRated';
 import Upcoming from './pages/Upcoming';
@@ -8,21 +8,35 @@ import Home from './pages/Home';
 
 import Navbar from './components/Navbar';
 
-function App() {
+const App = () => {
+  const [genres, setGenres] = useState([]);
+
+  useEffect(() => {
+    getGenres();
+  }, []);
+
+  async function getGenres() {
+    const response = await fetch(
+      'https://api.themoviedb.org/3/genre/movie/list?api_key=0e7274f05c36db12cbe71d9ab0393d47'
+    );
+    const data = await response.json();
+    setGenres(data.genres);
+  }
+
   return (
     <>
       <Router>
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/top-rated" element={<TopRated />} />
-          <Route path="/upcoming" element={<Upcoming />} />
-          <Route path="/popular" element={<Popular />} />
-          <Route path="/now-playing" element={<NowPlaying />} />
+          <Route path="/top-rated" element={<TopRated genres={genres} />} />
+          <Route path="/upcoming" element={<Upcoming genres={genres} />} />
+          <Route path="/popular" element={<Popular genres={genres} />} />
+          <Route path="/now-playing" element={<NowPlaying genres={genres} />} />
         </Routes>
       </Router>
     </>
   );
-}
+};
 
 export default App;
