@@ -36,7 +36,7 @@ const Navbar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            <Link to="/" style={{ textDecoration: 'none' }}>
+            <Link to="/" className="link">
               Movies
             </Link>
           </Typography>
@@ -75,7 +75,7 @@ const Navbar = () => {
                   <Typography textAlign="center">
                     <Link
                       to={`/${page.toLowerCase().split(' ').join('-')}`}
-                      style={{ textDecoration: 'none' }}
+                      className="link"
                     >
                       {page}
                     </Link>
@@ -90,7 +90,7 @@ const Navbar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
-            <Link to="/" style={{ textDecoration: 'none' }}>
+            <Link to="/" className="link">
               Movies
             </Link>
           </Typography>
@@ -103,7 +103,7 @@ const Navbar = () => {
               >
                 <Link
                   to={`/${page.toLowerCase().split(' ').join('-')}`}
-                  style={{ textDecoration: 'none' }}
+                  className="link"
                 >
                   {page}
                 </Link>
