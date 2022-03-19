@@ -5,6 +5,7 @@ import Upcoming from './pages/Upcoming';
 import Popular from './pages/Popular';
 import NowPlaying from './pages/NowPlaying';
 import Home from './pages/Home';
+import Search from './pages/Search';
 
 import Navbar from './components/Navbar';
 
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/upcoming" element={<Upcoming genres={genres} />} />
           <Route path="/popular" element={<Popular genres={genres} />} />
           <Route path="/now-playing" element={<NowPlaying genres={genres} />} />
+          <Route path="/search/:query" element={<Search genres={genres} />} />
         </Routes>
       </Router>
     </>

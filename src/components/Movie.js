@@ -5,11 +5,15 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
+import StarIcon from '@mui/icons-material/Star';
+import RecommendIcon from '@mui/icons-material/Recommend';
 
 const Movie = ({ movie, genres }) => {
   function getGenres() {
     if (movie.genre_ids.length > 0) {
       return genres.filter((genre) => movie.genre_ids.includes(genre.id));
+    } else {
+      return [];
     }
   }
 
@@ -35,9 +39,23 @@ const Movie = ({ movie, genres }) => {
               />
             ))}
           </Typography>
-          <Typography component="p">
-            {movie.vote_average} {movie.vote_count}
-          </Typography>
+          <br />
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Typography variant="string" component={'div'}>
+              <StarIcon />
+              <span>{movie.vote_average}</span>
+            </Typography>
+            <Typography variant="string" component={'div'}>
+              <RecommendIcon />
+              <span>{movie.vote_count}</span>
+            </Typography>
+          </div>
         </CardContent>
       </CardActionArea>
     </Card>
