@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Grid, Typography, Chip } from '@mui/material';
 import MovieDetailsImageCard from '../components/MovieDetailsImageCard';
+import moment from 'moment';
+import StarIcon from '@mui/icons-material/Star';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 const MovieDetails = ({ genres }) => {
   const { id } = useParams();
@@ -20,10 +24,12 @@ const MovieDetails = ({ genres }) => {
     setMovie(data);
   }
 
+  const releaseDate = moment(movie.release_date).format('Do MMM YYYY');
+
   return (
     <Container
       style={{
-        background: `linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
+        background: `linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
         height: '100vh',
         width: '100vw',
         marginTop: 15,
@@ -38,10 +44,11 @@ const MovieDetails = ({ genres }) => {
             <MovieDetailsImageCard movie={movie} />
           </Grid>
           <Grid item xs={6} md={8}>
-            <Container>
-              <Typography variant="h2">{movie.title}</Typography>
-              <Typography variant="h6">{movie.tagline}</Typography>
+            <Container component={'div'} className="movie-details">
+              <Typography variant="h3">{movie.title}</Typography>
+              <span style={{ fontStyle: 'italic' }}>{movie?.tagline}</span>
               <Typography variant="subtitle2" component="div">
+                Genres:
                 {movie?.genres?.map((genre) => (
                   <Chip
                     key={genre.id}
@@ -51,9 +58,9 @@ const MovieDetails = ({ genres }) => {
                   />
                 ))}
               </Typography>
-              <Typography variant="h6">
-                Release Date: {movie.release_date}
-              </Typography>
+              <div className="spacing">
+                <CalendarMonthIcon /> {releaseDate}
+              </div>
               <Typography variant="p">{movie.overview}</Typography>
               <Typography variant="subtitle2" component="div">
                 Available in:
@@ -66,12 +73,17 @@ const MovieDetails = ({ genres }) => {
                   />
                 ))}
               </Typography>
-              <Typography variant="p">{movie.status}</Typography>
               <Typography variant="p">
-                Vote Average: {movie.vote_average}
+                <div className="spacing">
+                  Rating: {movie.vote_average}{' '}
+                  <StarIcon className="star-icon icon-spacing" />{' '}
+                </div>
               </Typography>
               <Typography variant="p">
-                Vote Count: {movie.vote_count}
+                <div className="spacing">
+                  Votes: {movie.vote_count}
+                  <ThumbUpIcon className="icon-spacing" />{' '}
+                </div>
               </Typography>
             </Container>
           </Grid>

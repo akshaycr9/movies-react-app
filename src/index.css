@@ -17,3 +17,23 @@ code {
   color: #fff;
   text-decoration: none;
 }
+
+.movie-details {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50vh;
+}
+
+.spacing {
+  display: flex;
+  align-items: center;
+}
+
+.star-icon {
+  color: yellow;
+}
+
+.icon-spacing {
+  margin-left: 10px;
+}

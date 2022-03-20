@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
-import StarIcon from '@mui/icons-material/Star';
+import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import RecommendIcon from '@mui/icons-material/Recommend';
 import NoImage from '../images/no-image-available.png';
 import moment from 'moment';
@@ -28,7 +28,7 @@ const Movie = ({ movie, genres }) => {
       <Card style={{ width: 300, margin: 20 }}>
         <CardActionArea>
           <CardMedia style={{ height: 400 }} image={image} />
-          <CardContent>
+          <CardContent style={{ backgroundColor: 'floralwhite' }}>
             <Typography variant="headline" component="h2">
               {movie.title}
             </Typography>
@@ -53,13 +53,21 @@ const Movie = ({ movie, genres }) => {
                 justifyContent: 'space-between',
               }}
             >
-              <Typography variant="string" component={'div'}>
-                <StarIcon />
-                <span>{movie.vote_average}</span>
+              <Typography variant="p">
+                <div className="spacing">
+                  <span style={{ fontWeight: 'bold', fontSize: 20 }}>
+                    {movie.vote_average}{' '}
+                  </span>
+                  <StarOutlinedIcon className="star-icon" />{' '}
+                </div>
               </Typography>
-              <Typography variant="string" component={'div'}>
-                <RecommendIcon />
-                <span>{movie.vote_count}</span>
+              <Typography variant="p">
+                <div className="spacing">
+                  <span style={{ fontWeight: 'bold', fontSize: 20 }}>
+                    {movie.vote_count}
+                  </span>
+                  <RecommendIcon />{' '}
+                </div>
               </Typography>
             </div>
           </CardContent>
