@@ -7,7 +7,7 @@ const MoviesList = ({ movies, isFetching, genres }) => {
   return (
     <Grid container spacing={3}>
       {movies.map((movie, index) => (
-        <Grid item xs={8} sm={6} md={4}>
+        <Grid key={index} item xs={8} sm={6} md={4}>
           <Movie key={index} movie={movie} genres={genres} />
         </Grid>
       ))}
