@@ -25,9 +25,9 @@ const Movie = ({ movie, genres }) => {
   const releaseDate = moment(movie.release_date).format('Do MMM YYYY');
   return (
     <Link to={`/movie/${movie.id}`} className="link">
-      <Card style={{ width: 300, margin: 20 }}>
+      <Card style={{ margin: 20 }}>
         <CardActionArea>
-          <CardMedia style={{ height: 400 }} image={image} />
+          <CardMedia style={{ height: 500 }} image={image} />
           <CardContent style={{ backgroundColor: 'floralwhite' }}>
             <Typography variant="headline" component="h2">
               {movie.title}
