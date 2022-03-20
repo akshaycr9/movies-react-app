@@ -7,14 +7,22 @@ import StarIcon from '@mui/icons-material/Star';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
-const MovieDetails = ({ genres }) => {
+const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
-  console.log('movie =======', movie);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     getMovieDetails(id);
-  }, []);
+    checkIfFavorite(id);
+  }, [id]);
+
+  const checkIfFavorite = (id) => {
+    const favorites = JSON.parse(localStorage.getItem('favorites'));
+    if (favorites) {
+      setIsFavorite(favorites.find((movie) => movie.id === parseInt(id)));
+    }
+  };
 
   async function getMovieDetails(id) {
     const response = await fetch(
@@ -25,6 +33,13 @@ const MovieDetails = ({ genres }) => {
   }
 
   const releaseDate = moment(movie.release_date).format('Do MMM YYYY');
+
+  const addToFavorites = (movie) => {
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+    favorites.push(movie);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+    setIsFavorite(true);
+  };
 
   return (
     <Container
@@ -41,7 +56,11 @@ const MovieDetails = ({ genres }) => {
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={6} md={4}>
-            <MovieDetailsImageCard movie={movie} />
+            <MovieDetailsImageCard
+              movie={movie}
+              addToFavorites={addToFavorites}
+              isFavorite={isFavorite}
+            />
           </Grid>
           <Grid item xs={6} md={8}>
             <Container component={'div'} className="movie-details">

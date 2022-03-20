@@ -42,3 +42,11 @@ code {
   color: red;
   text-decoration: none;
 }
+
+.favorite-area {
+  display: flex;
+  align-items: center;
+  width: 100vh;
+  justify-content: center;
+  height: 5vh;
+}

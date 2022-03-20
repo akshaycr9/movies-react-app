@@ -7,11 +7,16 @@ import NowPlaying from './pages/NowPlaying';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import MovieDetails from './pages/MovieDetails';
+import Favorites from './pages/Favorites';
 
 import Navbar from './components/Navbar';
 
 const App = () => {
   const [genres, setGenres] = useState([]);
+
+  if (!localStorage.getItem('favorites')) {
+    localStorage.setItem('favorites', JSON.stringify([]));
+  }
 
   useEffect(() => {
     getGenres();
@@ -36,7 +41,8 @@ const App = () => {
           <Route path="/popular" element={<Popular genres={genres} />} />
           <Route path="/now-playing" element={<NowPlaying genres={genres} />} />
           <Route path="/search/:query" element={<Search genres={genres} />} />
-          <Route path="/movie/:id" element={<MovieDetails genres={genres} />} />
+          <Route path="/movie/:id" element={<MovieDetails />} />
+          <Route path="/favorites" element={<Favorites genres={genres} />} />
         </Routes>
       </Router>
     </>

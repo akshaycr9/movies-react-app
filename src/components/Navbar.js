@@ -10,7 +10,7 @@ import Logo from '../images/movie-logo.png';
 
 import SearchBar from './SearchBar';
 
-const pages = ['Now Playing', 'Popular', 'Top Rated', 'Upcoming'];
+const pages = ['Now Playing', 'Popular', 'Top Rated', 'Upcoming', 'Favorites'];
 
 const Navbar = () => {
   return (

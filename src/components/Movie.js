@@ -19,6 +19,29 @@ const Movie = ({ movie, genres }) => {
       return [];
     }
   }
+
+  const displayGenres = () => {
+    if (movie?.genres?.length > 0) {
+      return movie.genres.map((genre, index) => (
+        <Chip
+          key={index}
+          label={genre.name}
+          size="small"
+          style={{ margin: 4 }}
+        />
+      ));
+    } else {
+      return getGenres().map((genre) => (
+        <Chip
+          key={genre.id}
+          label={genre.name}
+          size="small"
+          style={{ margin: 4 }}
+        />
+      ));
+    }
+  };
+
   const image = movie.poster_path
     ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
     : NoImage;
@@ -36,14 +59,7 @@ const Movie = ({ movie, genres }) => {
               Release Date: {releaseDate}
             </Typography>
             <Typography variant="subtitle2" component="div">
-              {getGenres().map((genre) => (
-                <Chip
-                  key={genre.id}
-                  label={genre.name}
-                  size="small"
-                  style={{ margin: 4 }}
-                />
-              ))}
+              {displayGenres()}
             </Typography>
             <br />
             <div
