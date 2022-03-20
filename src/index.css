@@ -37,3 +37,8 @@ code {
 .icon-spacing {
   margin-left: 10px;
 }
+
+.active {
+  color: red;
+  text-decoration: none;
+}

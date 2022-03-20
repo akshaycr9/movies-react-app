@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Logo from '../images/movie-logo.png';
 
 import SearchBar from './SearchBar';
@@ -43,12 +43,14 @@ const Navbar = () => {
                 key={page}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                <Link
+                <NavLink
                   to={`/${page.toLowerCase().split(' ').join('-')}`}
-                  className="link"
+                  className={
+                    ((navData) => (navData.isActive ? 'active' : ''), 'link')
+                  }
                 >
                   {page}
-                </Link>
+                </NavLink>
               </Button>
             ))}
           </Box>
