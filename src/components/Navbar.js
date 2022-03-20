@@ -10,6 +10,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
+import Logo from '../images/movie-logo.png';
 
 import SearchBar from './SearchBar';
 
@@ -37,7 +38,17 @@ const Navbar = () => {
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
             <Link to="/" className="link">
-              Movies
+              <Box
+                component="img"
+                sx={{
+                  height: 60,
+                  width: 60,
+                  maxHeight: { xs: 233, md: 167 },
+                  maxWidth: { xs: 350, md: 250 },
+                }}
+                alt="Logo"
+                src={Logo}
+              />
             </Link>
           </Typography>
 
@@ -91,7 +102,17 @@ const Navbar = () => {
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
           >
             <Link to="/" className="link">
-              Movies
+              <Box
+                component="img"
+                sx={{
+                  height: 50,
+                  width: 50,
+                  maxHeight: { xs: 233, md: 167 },
+                  maxWidth: { xs: 350, md: 250 },
+                }}
+                alt="Logo"
+                src={Logo}
+              />
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
