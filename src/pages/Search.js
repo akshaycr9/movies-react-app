@@ -27,7 +27,11 @@ const Search = ({ genres }) => {
 
   return (
     <Container maxWidth="xl">
-      <Typography variant="h5" component="h3" style={{ margin: 20 }}>
+      <Typography
+        variant="h5"
+        component="h3"
+        style={{ margin: 20, color: 'white' }}
+      >
         Search Results for: {query}
       </Typography>
       <MoviesList movies={movies} isFetching={isFetching} genres={genres} />

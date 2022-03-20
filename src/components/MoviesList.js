@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import Movie from './Movie';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const MoviesList = ({ movies, isFetching, genres }) => {
   return (
@@ -10,7 +11,7 @@ const MoviesList = ({ movies, isFetching, genres }) => {
           <Movie key={index} movie={movie} genres={genres} />
         </Grid>
       ))}
-      {isFetching && 'Fetching more items...'}
+      {isFetching && <LinearProgress />}
     </Grid>
   );
 };

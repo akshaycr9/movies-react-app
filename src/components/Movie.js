@@ -8,6 +8,7 @@ import Chip from '@mui/material/Chip';
 import StarIcon from '@mui/icons-material/Star';
 import RecommendIcon from '@mui/icons-material/Recommend';
 import NoImage from '../images/no-image-available.png';
+import moment from 'moment';
 
 const Movie = ({ movie, genres }) => {
   function getGenres() {
@@ -20,6 +21,7 @@ const Movie = ({ movie, genres }) => {
   const image = movie.poster_path
     ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
     : NoImage;
+  const releaseDate = moment(movie.release_date).format('Do MMM YYYY');
   return (
     <Card style={{ width: 300, margin: 20 }}>
       <CardActionArea>
@@ -28,7 +30,9 @@ const Movie = ({ movie, genres }) => {
           <Typography variant="headline" component="h2">
             {movie.title}
           </Typography>
-          <Typography color="textSecondary">{movie.release_date}</Typography>
+          <Typography color="textSecondary">
+            Release Date: {releaseDate}
+          </Typography>
           <Typography variant="subtitle2" component="div">
             {getGenres().map((genre) => (
               <Chip
