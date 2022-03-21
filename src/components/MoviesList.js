@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import Movie from './Movie';
-import CircularProgress from '@mui/material/CircularProgress';
 
 const MoviesList = ({ movies, isFetching, genres }) => {
   return (

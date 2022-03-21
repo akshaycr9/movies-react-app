@@ -1,24 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import MoviesList from '../components/MoviesList';
-import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import Container from '@mui/material/Container';
 import CircularProgress from '@mui/material/CircularProgress';
+import useFetchData from '../hooks/useFetchData';
 const TopRated = ({ genres }) => {
-  const [movies, setMovies] = useState([]);
-  const [isFetching, setIsFetching] = useInfiniteScroll(getMovies);
-
-  useEffect(() => {
-    getMovies();
-  }, []);
-
-  async function getMovies(pageNo = 1) {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/top_rated?page=${pageNo}&api_key=0e7274f05c36db12cbe71d9ab0393d47`
-    );
-    const data = await response.json();
-    setMovies((prevState) => [...prevState, ...data.results]);
-    setIsFetching(false);
-  }
+  const [movies, isFetching] = useFetchData('top_rated');
 
   return (
     <Container maxWidth="xl">
