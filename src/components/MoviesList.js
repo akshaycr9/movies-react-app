@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import Movie from './Movie';
 
-const MoviesList = ({ movies, isFetching, genres }) => {
+const MoviesList = ({ movies, genres }) => {
   return (
     <Grid container spacing={3}>
       {movies.map((movie, index) => (
@@ -10,7 +10,6 @@ const MoviesList = ({ movies, isFetching, genres }) => {
           <Movie key={index} movie={movie} genres={genres} />
         </Grid>
       ))}
-      {/* {true && <CircularProgress size={60} />} */}
     </Grid>
   );
 };

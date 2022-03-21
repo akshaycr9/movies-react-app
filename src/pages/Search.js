@@ -4,7 +4,6 @@ import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import MoviesList from '../components/MoviesList';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import CircularProgress from '@mui/material/CircularProgress';
 import Loader from '../components/Loader';
 
 const Search = ({ genres }) => {
@@ -36,7 +35,7 @@ const Search = ({ genres }) => {
       >
         Search Results for: {query}
       </Typography>
-      <MoviesList movies={movies} isFetching={isFetching} genres={genres} />
+      <MoviesList movies={movies} genres={genres} />
       {isFetching && <Loader />}
     </Container>
   );

@@ -8,7 +8,7 @@ const Upcoming = ({ genres }) => {
 
   return (
     <Container maxWidth="xl">
-      <MoviesList movies={movies} isFetching={isFetching} genres={genres} />
+      <MoviesList movies={movies} genres={genres} />
       {isFetching && <Loader />}
     </Container>
   );
