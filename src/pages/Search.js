@@ -5,6 +5,7 @@ import MoviesList from '../components/MoviesList';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
+import Loader from '../components/Loader';
 
 const Search = ({ genres }) => {
   let { query } = useParams();
@@ -36,11 +37,7 @@ const Search = ({ genres }) => {
         Search Results for: {query}
       </Typography>
       <MoviesList movies={movies} isFetching={isFetching} genres={genres} />
-      {isFetching && (
-        <span className="loader">
-          <CircularProgress size={60} />
-        </span>
-      )}
+      {isFetching && <Loader />}
     </Container>
   );
 };
