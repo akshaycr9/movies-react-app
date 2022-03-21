@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import MoviesList from '../components/MoviesList';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const NowPlaying = ({ genres }) => {
   const [movies, setMovies] = useState([]);
@@ -23,6 +24,11 @@ const NowPlaying = ({ genres }) => {
   return (
     <Container maxWidth="xl">
       <MoviesList movies={movies} isFetching={isFetching} genres={genres} />
+      {isFetching && (
+        <span className="loader">
+          <CircularProgress size={60} />
+        </span>
+      )}
     </Container>
   );
 };

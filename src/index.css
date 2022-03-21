@@ -50,3 +50,9 @@ code {
   justify-content: center;
   height: 5vh;
 }
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -23,6 +23,11 @@ const TopRated = ({ genres }) => {
   return (
     <Container maxWidth="xl">
       <MoviesList movies={movies} isFetching={isFetching} genres={genres} />
+      {isFetching && (
+        <span className="loader">
+          <CircularProgress size={60} />
+        </span>
+      )}
     </Container>
   );
 };
