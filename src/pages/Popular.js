@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container } from '@mui/material';
 import MoviesList from '../components/MoviesList';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Popular = ({ genres }) => {
   const [movies, setMovies] = useState([]);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MoviesList from '../components/MoviesList';
 import useInfiniteScroll from '../hooks/useInfiniteScroll';
 import Container from '@mui/material/Container';
-
+import CircularProgress from '@mui/material/CircularProgress';
 const TopRated = ({ genres }) => {
   const [movies, setMovies] = useState([]);
   const [isFetching, setIsFetching] = useInfiniteScroll(getMovies);
