@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import useInfiniteScroll from './useInfiniteScroll';
+import { API_BASE_URL, API_KEY, API_SEARCH_URL } from '../AppVariables';
 
 const useFetchData = (pageType, query) => {
-  const BASE_URL = 'https://api.themoviedb.org/3/movie';
-  const SEARCH_BASE_URL = 'https://api.themoviedb.org/3/search/movie';
-  const API_KEY = '0e7274f05c36db12cbe71d9ab0393d47'; //Should be present in env variable but for simplicity I am hardcoding it here
   const [movies, setMovies] = useState([]);
   const [isFetching, setIsFetching] = useInfiniteScroll(
     pageType === 'search' ? searchMovie : getMovies
@@ -21,7 +19,7 @@ const useFetchData = (pageType, query) => {
 
   async function getMovies(pageNo = 1) {
     const response = await fetch(
-      `${BASE_URL}/${pageType}?page=${pageNo}&api_key=${API_KEY}`
+      `${API_BASE_URL}/${pageType}?page=${pageNo}&api_key=${API_KEY}`
     );
     const data = await response.json();
     setMovies((prevState) => [...prevState, ...data.results]);
@@ -30,7 +28,7 @@ const useFetchData = (pageType, query) => {
 
   async function searchMovie(pageNo = 1) {
     const response = await fetch(
-      `${SEARCH_BASE_URL}?query=${query}&page=${pageNo}&api_key=${API_KEY}`
+      `${API_SEARCH_URL}?query=${query}&page=${pageNo}&api_key=${API_KEY}`
     );
     const data = await response.json();
     setMovies((prevState) => [...prevState, ...data.results]);

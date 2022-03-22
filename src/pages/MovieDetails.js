@@ -4,6 +4,7 @@ import { Container, Grid } from '@mui/material';
 import MovieDetailsImageCard from '../components/MovieDetailsImageCard';
 import MovieDetailsData from '../components/MovieDetailsData';
 import useFavorite from '../hooks/useFavorite';
+import { API_BASE_URL, API_KEY } from '../AppVariables';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -15,9 +16,7 @@ const MovieDetails = () => {
   }, [id]);
 
   async function getMovieDetails(id) {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=0e7274f05c36db12cbe71d9ab0393d47`
-    );
+    const response = await fetch(`${API_BASE_URL}/${id}?api_key=${API_KEY}`);
     const data = await response.json();
     setMovie(data);
   }
