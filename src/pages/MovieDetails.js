@@ -3,23 +3,16 @@ import { useParams } from 'react-router-dom';
 import { Container, Grid } from '@mui/material';
 import MovieDetailsImageCard from '../components/MovieDetailsImageCard';
 import MovieDetailsData from '../components/MovieDetailsData';
+import useFavorite from '../hooks/useFavorite';
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, addToFavorites] = useFavorite(id);
 
   useEffect(() => {
     getMovieDetails(id);
-    checkIfFavorite(id);
   }, [id]);
-
-  const checkIfFavorite = (id) => {
-    const favorites = JSON.parse(localStorage.getItem('favorites'));
-    if (favorites) {
-      setIsFavorite(favorites.find((movie) => movie.id === parseInt(id)));
-    }
-  };
 
   async function getMovieDetails(id) {
     const response = await fetch(
@@ -28,13 +21,6 @@ const MovieDetails = () => {
     const data = await response.json();
     setMovie(data);
   }
-
-  const addToFavorites = (movie) => {
-    let favorites = JSON.parse(localStorage.getItem('favorites'));
-    favorites.push(movie);
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-    setIsFavorite(true);
-  };
 
   return (
     <Container
