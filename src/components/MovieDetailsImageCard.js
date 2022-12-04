@@ -4,7 +4,6 @@ import {
   CardActionArea,
   CardMedia,
   CardActions,
-  Button,
   Typography,
 } from '@mui/material';
 // import FavoriteIcon from '@mui/icons-material/Favorite';
